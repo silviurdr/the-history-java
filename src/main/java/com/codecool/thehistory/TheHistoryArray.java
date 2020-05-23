@@ -58,11 +58,29 @@ public class TheHistoryArray implements TheHistory {
         }
     }
 
+    public String stringBuilder(String[] collectionToConvert) {
+
+        StringBuilder collectionWordsStr = new StringBuilder();
+        for (String word: collectionToConvert) {
+            collectionWordsStr.append(word).append(" ");
+        }
+        if (collectionWordsStr.length() > 0) collectionWordsStr.deleteCharAt(collectionWordsStr.length() - 1);
+
+        String theString = collectionWordsStr.toString();
+        return theString;
+    }
+
     @Override
     public void replaceMoreWords(String[] fromWords, String[] toWords) {
         //TODO: check the TheHistory interface for more information
 
+        String collectionWordsStr = stringBuilder(wordsArray);
+        String fromWordsStr = stringBuilder(fromWords);
+        String toWordsStr = stringBuilder(toWords);
 
+        collectionWordsStr = collectionWordsStr.replace(fromWordsStr, toWordsStr);
+
+        wordsArray = collectionWordsStr.split(" ");
 
     }
 
